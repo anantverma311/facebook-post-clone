@@ -1,0 +1,133 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222831;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* main container box */
+
+.postContainer {
+  margin: auto;
+  width: 40%;
+  background-color: #eeeeee;
+  height: 90vh;
+  border-radius: 10px;
+  /* margin: auto; */
+}
+
+/* Header section of the post */
+
+.header {
+  padding: 25px;
+  /* background-color: antiquewhite; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 1px solid rgb(199, 199, 199);
+}
+.profileImg {
+  float: left;
+  border-radius: 50%;
+  width: 50px;
+  margin-right: 10px;
+}
+.profileName {
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: 700;
+}
+.time {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #606265;
+}
+.dotsMenu {
+  position: relative;
+  bottom: 33px;
+  float: right;
+}
+
+/* main content section  */
+
+.content {
+  /* background-color: aqua; */
+  height: 50%;
+}
+.postContent {
+  /* background-color: tomato; */
+  padding: 10px 20px 0px 20px;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+.postImage {
+  padding: 10px 0px;
+  width: 100%;
+  height: 79%;
+  object-fit: cover;
+}
+
+/* Reactions sections */
+
+.reactionContainer {
+  /* background-color: pink; */
+  height: 8%;
+  padding: 10px;
+  /* border-bottom: 1px solid  rgb(199, 199, 199); */
+}
+.blue-icon {
+  color: #0099ff;
+}
+.thumbsUp {
+  font-size: 14px;
+}
+
+/* Action bar section */
+
+.actionBarContainer {
+  display: flex;
+  justify-content: space-between;
+  /* height: 100%; */
+  /* background-color: aquamarine; */
+}
+.actionButton {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgb(185, 185, 185);
+  color: #606265;
+  outline: none;
+  height: 7vh;
+}
+.actionIcon {
+  font-size: 16px;
+  color: #606265;
+}
+.buttonText {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+/* Comment section */
+
+.commentContainer {
+  padding: 30px;
+}
+textarea {
+  margin-top: 2px;
+  margin-left: 20px;
+  width: 80%;
+  height: 7vh;
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px solid rgb(185, 185, 185);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  outline: none;
+}
+::placeholder {
+  font-size: 16px;
+  font-family: roboto;
+}
