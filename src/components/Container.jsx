@@ -1,16 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import Content from "./ContentSection";
-import Reactions from "./Reactions";
 import ActionBar from "./ActionBar";
 import CommentSection from "./CommentSection";
 
-function Container() {
+function Container(props) {
   return (
     <div className="postContainer">
-      <Header />
-      <Content />
-      <Reactions />
+      <Header url={props.URL} profileName={props.profileName} />
+      <Content postContent={props.postContent} postImage={props.postImage} />
       <ActionBar />
       <CommentSection />
     </div>

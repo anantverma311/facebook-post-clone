@@ -1,13 +1,17 @@
 import React from "react";
 import ProfileImage from "./ProfileImage";
 
-function Header() {
+function Header(props) {
+
+  const time = new Date().toLocaleTimeString();
+  const amPm = time <=12 ? "am" : "pm";
+
   return (
     <div className="header">
-      <ProfileImage Url=" https://www.fakepersongenerator.com/Face/male/male1085793991607.jpg" />
+      <ProfileImage Url={props.url}/>
       <div>
-        <p className="profileName">Patricia E Tran</p>
-        <p className="time">11:55pm</p>
+        <p className="profileName">{props.profileName}</p>
+        <p className="time">{time}{amPm}</p>
         <i className="fas fa-ellipsis-h dotsMenu"></i>
       </div>
     </div>
@@ -15,3 +19,6 @@ function Header() {
 }
 
 export default Header;
+
+
+// 
