@@ -5,11 +5,13 @@ import axios from "axios";
 
 function App(props) {
   const [members, setMembers] = useState([]);
-  const [member, setMember] = useState({ name: "" });
+  const [member, setMember] = useState("");
 
   function changeHandler(event) {
     console.log(event.target.value);
-    setMember(event.target.value);
+    setMember({
+      [event.target.name]: event.target.value,
+    });
   }
 
   function submitHandler(event) {
@@ -67,7 +69,12 @@ function App(props) {
             })}
           </ul>
           <form action="/backend" method="post" onSubmit={submitHandler}>
-            <input type="text" name="name" onChange={changeHandler}></input>
+            <input
+              type="text"
+              name="name"
+              placeholder="name"
+              onChange={changeHandler}
+            ></input>
             <button type="submit">send</button>
           </form>
         </div>

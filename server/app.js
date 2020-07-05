@@ -18,8 +18,8 @@ app.get("/backend", (req, res) => {
 });
 
 app.post("/backend", (req, res) => {
-  console.log(req.body);
-  const data = req.body.name;
+  const data = req.body;
+  console.log(data);
   res.send(data);
 });
 
