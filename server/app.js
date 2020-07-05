@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const port = 5000;
 
@@ -16,11 +17,11 @@ app.get("/backend", (req, res) => {
   res.send(members);
 });
 
-app.post("/backend" , (req ,res) => {
+app.post("/backend", (req, res) => {
+  console.log(req.body);
   const data = req.body.name;
-  console.log(data);
-   res.send(console.log(data));
-})
+  res.send(data);
+});
 
 app.listen(port, () => {
   console.log("server started at localhost:" + port);
