@@ -16,10 +16,10 @@ app.get("/backend", (req, res) => {
   res.send(members);
 });
 
-app.post("/backend" , (req ,res) => {
-  const data = req.body.name;
+app.post("/backend" , (req ,res ) => {
+  const data = req.body;
   console.log(data);
-   res.send(console.log(data));
+   res.send(data);
 })
 
 app.listen(port, () => {

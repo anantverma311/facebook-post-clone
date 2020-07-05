@@ -5,28 +5,31 @@ import axios from "axios";
 
 function App(props) {
   const [members, setMembers] = useState([]);
-  const [ member , setMember] = useState({ name: "" });
+  const [member, setMember] = useState("");
 
   function changeHandler(event) {
-    const parada = setMember({ [event.target.name]: event.target.value });
-    console.log(parada);
+    console.log(event.target.value);
+    setMember(event.target.value);
   }
 
   function submitHandler(event) {
     event.preventDefault();
 
     const user = {
-      name: member,
+      member,
     };
 
     axios
-      .post("/backend", user)
+      .post("/backend", user, {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
       .then((response) => {
-        console.log("hello");
         console.log(response);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
       });
   }
 
@@ -62,7 +65,7 @@ function App(props) {
               );
             })}
           </ul>
-          <form onSubmit={submitHandler}>
+          <form action="/backend" method="post" onSubmit={submitHandler}>
             <input type="text" name="name" onChange={changeHandler}></input>
             <button type="submit">send</button>
           </form>
