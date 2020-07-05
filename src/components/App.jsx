@@ -5,7 +5,7 @@ import axios from "axios";
 
 function App(props) {
   const [members, setMembers] = useState([]);
-  const [ member , setMember] = useState({ name: "" });
+  const [member, setMember] = useState({ name: "" });
 
   function changeHandler(event) {
     const parada = setMember({ [event.target.name]: event.target.value });
@@ -22,8 +22,7 @@ function App(props) {
     axios
       .post("/backend", user)
       .then((response) => {
-        console.log("hello");
-        console.log(response);
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +30,7 @@ function App(props) {
   }
 
   useEffect(() => {
-    async function backend() {
+    function backend() {
       axios
         .get("/backend")
         .then((result) => {
@@ -42,8 +41,9 @@ function App(props) {
           console.log(err);
         });
     }
+
     backend();
-  });
+  }, []);
 
   return PostData.map((data) => {
     return (
