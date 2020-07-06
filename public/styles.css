@@ -39,6 +39,7 @@ body {
 .profileName {
   font-size: 16px;
   margin-top: 5px;
+  margin-bottom: 0px;
   font-weight: 700;
 }
 .time {
@@ -138,7 +139,7 @@ textarea {
   border: none;
   font-size: 2em;
   position: relative;
-  bottom: 30px;
+  bottom: 15px;
   right: -12px;
   color: rgb(71, 70, 70);
   outline: none;
@@ -180,3 +181,15 @@ textarea {
   text-align: center;
 }
 
+/* post compose section */
+
+.composeContainer {
+  width: 40%;
+  margin: 20px auto;
+  padding : 20px;
+  background-color: #EEEEEE;
+  border-radius: 20px;
+}
+.formHeading{
+  font-size: 2rem;
+}
