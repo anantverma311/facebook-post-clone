@@ -3,20 +3,23 @@ import Container from "./Container";
 import Axios from "axios";
 
 function FeedPostContainer(props) {
-  const [feed, setFeed] = useState([]);
+ const [feed, setFeed] = useState([]);
 
   useEffect(() => {
     Axios.get("/user")
       .then((response) => {
         console.log(response.data);
-        setFeed(response.data);
+        setFeed(response.data.reverse()); 
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  
 
-  return [...feed].reverse().map((data) => {
+// can't add reverse here coz it will keep on reversing on click as return will execute on every click 
+
+  return feed.map((data) => {
     return (
       <div key={data._id}>
         <Container
