@@ -1,49 +1,22 @@
-import React, { useState, useEffect } from "react";
-import Container from "./Container";
-import Axios from "axios";
+import React from "react";
+import FeedPostContainer from "./FeedPostContainer";
+import NavBar from "./Navbar";
+import ComposePost from "./ComposePost";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App(props) {
-  const [feed, setFeed] = useState([]);
-
-  useEffect(() => {
-    Axios.get("/user")
-      .then((response) => {
-        console.log(response.data);
-        setFeed(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  return feed.reverse().map((data) => {
-    return (
-      <div key={data._id}>
-        <Container
-          URL={data.profileImage}
-          profileName={data.profileName}
-          postContent={data.postContent}
-          postImage={data.imageUrl}
-        />
+const App = () => {
+  return (
+    // client side rendering router in the dom using react-router-dom
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={FeedPostContainer} />
+          <Route path="/compose" component={ComposePost} />
+        </Switch>
       </div>
-    );
-  });
-}
+    </Router>
+  );
+};
 
 export default App;
-
-// useEffect(() => {
-//     function backend() {
-//       axios
-//         .get("/backend")
-//         .then((result) => {
-//           const resultData = result;
-//           return setMembers(resultData.data);
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     }
-
-//     backend();
-//   }, []);

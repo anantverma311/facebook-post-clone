@@ -17,7 +17,7 @@ body {
   background-color: #eeeeee;
   height: 100%;
   border-radius: 10px;
-  margin-bottom: 2%;
+  margin-top: 2%;
   /* margin: auto; */
 }
 
@@ -91,8 +91,7 @@ body {
 .actionBarContainer {
   display: flex;
   justify-content: space-between;
-  /* height: 100%; */
-  /* background-color: aquamarine; */
+  border-radius: 30px;
 }
 .actionButton {
   width: 30%;
@@ -101,8 +100,11 @@ body {
   cursor: pointer;
   border: 1px solid rgb(185, 185, 185);
   color: #606265;
-  outline: none;
   height: 7vh;
+}
+.actionButton:focus{
+  outline: none;
+
 }
 .actionIcon {
   font-size: 16px;
@@ -167,7 +169,7 @@ textarea {
   margin-bottom: 10px;
   width: 100%;
   height: 2px;
-  background-color: #ffffff  ;
+  background-color: #ffffff;
 }
 
 /* for the backend container */
@@ -185,11 +187,50 @@ textarea {
 
 .composeContainer {
   width: 40%;
-  margin: 20px auto;
-  padding : 20px;
-  background-color: #EEEEEE;
+  margin: 4% auto 20px auto;
+  padding: 20px;
+  background-color: #eeeeee;
   border-radius: 20px;
 }
-.formHeading{
+.formHeading {
   font-size: 2rem;
+}
+
+/* nav bar */
+
+.navBar {
+  height: 8vh;
+  background-color: #222831;
+  display: flex;
+  justify-content: space-between;
+  padding: 13px;
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
+}
+
+.brandName {
+color: white;
+font-size: 18px;
+text-decoration: none;
+}
+.brandName:hover {
+  text-decoration: none;
+  color: #7e7e7e;
+}
+.navLinks {
+  display: flex;
+}
+.navLinks li {
+  margin-right: 20px;
+  list-style-type: none;
+}
+.navLinks li:hover {
+  text-decoration: none;
+  color: #7e7e7e;
+}
+.navLinks li {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }

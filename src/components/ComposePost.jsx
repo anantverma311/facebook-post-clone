@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
-function ComposePost() {
+function ComposePost(props) {
   const [formData, setFormData] = useState({
     profileImage: "",
     profileName: "",
     postContent: "",
     imageUrl: "",
   });
+  let history = useHistory(); // programatically helps us to change routes
 
   return (
     <div className="composeContainer">
@@ -38,6 +40,7 @@ function ComposePost() {
             });
             // sending a post req to the server
             window.location.reload(); // onSubmit automatically reload the page
+            history.goBack("/"); // this will go-back to the route specified on the click of the button 
           }
         }}
       >
