@@ -14,11 +14,9 @@ const NavBar = () => {
   return (
     <div>
       <nav className="navBar">
-        <a href="#home" className="brandName">
           <Link style={navStyle} to="/" className="brandName">
             <i className="fas fa-seedling"></i> SeedLnks
           </Link>
-        </a>
         <ul className="navLinks">
           <Link
             onClick={() => {
