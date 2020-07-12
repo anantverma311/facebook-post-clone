@@ -4,6 +4,7 @@ import NavBar from "./Navbar";
 import ComposePost from "./ComposePost";
 import AboutPage from "./AboutPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import RegisterPage from "./RegisterPage";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={FeedPostContainer} />
           <Route path="/compose" component={ComposePost} />
-          <Route path="/about" component={AboutPage}/>
+          <Route path="/about" component={AboutPage} />
+          <Route path="/signin" component={RegisterPage} />
         </Switch>
       </div>
     </Router>

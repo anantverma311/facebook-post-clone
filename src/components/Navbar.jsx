@@ -6,6 +6,7 @@ const NavBar = () => {
   const [onActiveAdd, setAdd] = useState();
   const [onActiveFeed, setFeed] = useState();
   const [onActiveAbout, setAbout] = useState();
+  const [onActiveLogin, setLogin] = useState();
 
   const navStyle = {
     textDecoration: "none",
@@ -14,15 +15,30 @@ const NavBar = () => {
   return (
     <div>
       <nav className="navBar">
-          <Link style={navStyle} to="/" className="brandName">
-            <i className="fas fa-seedling"></i> SeedLnks
-          </Link>
+        <Link style={navStyle} to="/" className="brandName">
+          <i className="fas fa-seedling"></i> SeedLnks
+        </Link>
         <ul className="navLinks">
+          <Link
+            onClick={() => {
+              setAdd("");
+              setFeed("");
+              setAbout("");
+              setLogin("grey");
+            }}
+            to="/signin"
+            style={navStyle}
+          >
+            <li style={{ color: onActiveLogin }}>
+              <i className="fas fa-sign-in-alt"></i>
+            </li>
+          </Link>
           <Link
             onClick={() => {
               setAdd("grey");
               setAbout("");
               setFeed("");
+              setLogin("");
             }}
             style={navStyle}
             to="/compose"
@@ -34,6 +50,7 @@ const NavBar = () => {
           <Link
             onClick={() => {
               setAdd("");
+              setLogin("");
               setAbout("");
               setFeed("grey");
             }}
@@ -48,6 +65,7 @@ const NavBar = () => {
             onClick={() => {
               setAdd("");
               setFeed("");
+              setLogin("");
               setAbout("grey");
             }}
             to="/about"
