@@ -26,7 +26,7 @@ const NavBar = () => {
               setAbout("");
               setLogin("grey");
             }}
-            to="/signin"
+            to="/register"
             style={navStyle}
           >
             <li style={{ color: onActiveLogin }}>

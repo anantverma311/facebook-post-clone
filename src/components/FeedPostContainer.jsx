@@ -6,7 +6,7 @@ function FeedPostContainer(props) {
  const [feed, setFeed] = useState([]);
 
   useEffect(() => {
-    Axios.get("/user")
+    Axios.get("/feed")
       .then((response) => {
         console.log(response.data);
         setFeed(response.data.reverse()); 

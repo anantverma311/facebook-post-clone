@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
+  let history = useHistory();
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -10,6 +12,7 @@ const RegisterPage = () => {
     password: "",
   });
   const [imageUpload, setImageUpload] = useState({});
+  const [afterRegister, setAfterRegister] = useState("");
 
   return (
     <div>
@@ -21,7 +24,7 @@ const RegisterPage = () => {
             formData.append("file", imageUpload);
 
             axios
-              .post("/upload", formData, {
+              .post("/imageupload", formData, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -40,9 +43,19 @@ const RegisterPage = () => {
                   console.log(err.response.data.msg);
                 }
               });
-            axios.post("/upload/user", userData).then((response) => {
-              console.log(response.data);
-            });
+            axios
+              .post("/register", userData)
+              .then(async (response) => {
+                console.log(response.data);
+                const backData = await response.data;
+                if (backData === "OK") {
+                   history.push("/");
+                }
+                setAfterRegister(backData);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
             setUserData({
               firstname: "",
               lastname: "",
@@ -131,11 +144,19 @@ const RegisterPage = () => {
               setUserData({ ...userData, password: e.target.value });
             }}
           />
+          <p style={{ color: "red", fontSize: "12px" }}>{afterRegister}</p>
           <button className="btn btn-lg btn-dark btn-block" type="submit">
-            Create Account
+            Create An Account
           </button>
           <p className="signUpContent">already have an account?</p>
-          <button className="btn  btn-dark">Sign in</button>
+          <button
+            onClick={() => {
+              history.push("/signin");
+            }}
+            className="btn  btn-dark"
+          >
+            Sign in
+          </button>
           <p className="mt-5 mb-3 text-muted">&copy; 🖤 Anant Verma</p>
         </form>
       </div>

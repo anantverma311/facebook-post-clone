@@ -25,7 +25,7 @@ function ComposePost(props) {
           ) {
             alert("kindly fill the form !");
           } else {
-            Axios.post("/user", formData)
+            Axios.post("/feed", formData)
               .then((response) => {
                 console.log(response.data);
               })

@@ -337,3 +337,10 @@ textarea {
   width: 80px;
   cursor: pointer;
 }
+
+/* Sign in Section */
+
+.signInAvatar {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
