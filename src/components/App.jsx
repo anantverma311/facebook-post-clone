@@ -14,10 +14,10 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/signin" component={SignInPage} />
-          <Route path="/" exact component={FeedPostContainer} />
+          <Route path="/" exact component={RegisterPage} />
           <Route path="/compose" component={ComposePost} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/register" component={RegisterPage} />
+          <Route path="/feed" component={FeedPostContainer} />
         </Switch>
       </div>
     </Router>

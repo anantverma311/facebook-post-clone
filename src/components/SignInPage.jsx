@@ -21,7 +21,7 @@ const SignInPage = () => {
               console.log(response.data);
               const SignInData = await response.data;
               if (SignInData === "OK") {
-                history.push("/");
+                history.push("/feed");
               }
               setValidate(SignInData);
               setSignIn({ email: "", password: "" });
@@ -70,7 +70,7 @@ const SignInPage = () => {
         <p className="signUpContent">new to seedlnks?</p>
         <button
           onClick={() => {
-            history.push("/register");
+            history.push("/");
           }}
           className="btn  btn-dark"
         >

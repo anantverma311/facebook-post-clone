@@ -1,7 +1,10 @@
+require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload"); // package for uploading files
+const md5 = require("md5");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -113,7 +116,7 @@ app.post("/register", async (req, res) => {
       firstName: userData.firstname,
       lastName: userData.lastname,
       email: userData.email,
-      password: userData.password,
+      password: md5(userData.password),
     });
     userProfile.save();
     res.send(200);
@@ -123,17 +126,22 @@ app.post("/register", async (req, res) => {
 
 app.post("/signin", async (req, res) => {
   const userSignInData = req.body;
-  console.log(userSignInData);
   const emailExist = await User.findOne({ email: userSignInData.email });
-  if (emailExist) {
-    const passCheck = await User.findOne({ password: userSignInData.password });
-    if (passCheck) {
-      res.sendStatus(200);
+  try {
+    if (emailExist) {
+      const passCheck = await User.findOne({
+        password: md5(userSignInData.password),
+      });
+      if (passCheck) {
+        res.sendStatus(200);
+      } else {
+        res.send("Enter a valid email/password");
+      }
     } else {
-      res.send("Enter a valid email/password");
+      res.send("Enter a valid email/password").status(400);
     }
-  } else {
-    res.send("Enter a valid email/password").status(400);
+  }catch(err){
+    console.log(err);
   }
 });
 

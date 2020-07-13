@@ -49,7 +49,7 @@ const RegisterPage = () => {
                 console.log(response.data);
                 const backData = await response.data;
                 if (backData === "OK") {
-                   history.push("/");
+                   history.push("/feed");
                 }
                 setAfterRegister(backData);
               })

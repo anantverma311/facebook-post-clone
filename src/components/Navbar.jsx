@@ -26,7 +26,7 @@ const NavBar = () => {
               setAbout("");
               setLogin("grey");
             }}
-            to="/register"
+            to="/"
             style={navStyle}
           >
             <li style={{ color: onActiveLogin }}>
@@ -47,20 +47,20 @@ const NavBar = () => {
               add <i className="fas fa-plus-circle"></i>
             </li>
           </Link>
-          <Link
+          {/* <Link
             onClick={() => {
               setAdd("");
               setLogin("");
               setAbout("");
               setFeed("grey");
             }}
-            to="/"
+            to="/feed"
             style={navStyle}
           >
             <li style={{ color: onActiveFeed }}>
               Feed <i className="fas fa-home"></i>
             </li>
-          </Link>
+          </Link> */}
           <Link
             onClick={() => {
               setAdd("");
