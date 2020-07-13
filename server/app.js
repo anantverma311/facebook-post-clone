@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 
 const UserProfileSchema = new mongoose.Schema({
   firstName: String,
-  LastName: String,
+  lastName: String,
   email: String,
   password: String,
 });
@@ -47,7 +47,7 @@ const port = 5000;
 
 // get and post req for the user profile database
 
-app.get("/user", (req, res) => {
+app.get("/feed", (req, res) => {
   // reading data from the database
 
   // eslint-disable-next-line array-callback-return
@@ -60,7 +60,7 @@ app.get("/user", (req, res) => {
   });
 });
 
-app.post("/user", (req, res) => {
+app.post("/feed", (req, res) => {
   const user = req.body;
   console.log(user);
   res.send(user);
@@ -77,7 +77,7 @@ app.post("/user", (req, res) => {
 
 // uploading files to the backend using express-fileUpload
 
-app.post("/upload", (req, res) => {
+app.post("/imageupload", (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: "no file uploaded" });
   }
@@ -92,28 +92,49 @@ app.post("/upload", (req, res) => {
   });
 });
 
-app.get("/upload/user", (req, res) => {
+app.get("/register", (req, res) => {
   User.find((err, userData) => {
     if (err) {
-      console.log(err);
+      return console.log(err);
     } else {
-      res.json(userData);
+      return res.json(userData);
     }
   });
 });
 
-app.post("/upload/user", (req, res) => {
+app.post("/register", async (req, res) => {
   const userData = req.body;
-  console.log(userData);
-  res.send(userData);
+  // check if the email already exists
+  const emailExist = await User.findOne({ email: userData.email });
+  if (emailExist) {
+    return res.send("email already exist! please sign in").status(400);
+  } else {
+    const userProfile = new User({
+      firstName: userData.firstname,
+      lastName: userData.lastname,
+      email: userData.email,
+      password: userData.password,
+    });
+    userProfile.save();
+    res.send(200);
+  }
   //creating user profile document
-  const userProfile = new User({
-    firstName: userData.firstname,
-    lastName: userData.lastname,
-    email: userData.email,
-    password: userData.password,
-  });
-  userProfile.save();
+});
+
+app.post("/signin", async (req, res) => {
+  const userSignInData = req.body;
+  console.log(userSignInData);
+  const emailExist = await User.findOne({ email: userSignInData.email });
+  if (emailExist) {
+    const passCheck = await User.findOne({ password: userSignInData.password });
+    if (passCheck) {
+      res.sendStatus(200);
+    } else {
+      res.send("Enter a valid email/password");
+    }
+  } else {
+    res.send("Enter a valid email/password").status(400);
+  }
 });
 
 app.listen(port, () => {
